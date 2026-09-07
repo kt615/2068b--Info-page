@@ -30,11 +30,11 @@ body::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: brightness(1.05) contrast(1.2);
+  filter: brightness(1.05) contrast(1.25);
   z-index: -3;
 }
 
-/* VERY LIGHT OVERLAY — MINIMAL BLUR */
+/* LIGHT OVERLAY — MINIMAL BLUR */
 body::after {
   content: "";
   position: fixed;
@@ -79,31 +79,15 @@ nav a {
 }
 
 /* LOGO — THIN WHITE OUTLINE GLOW */
-.logo-glow {
-  position: relative;
-  display: inline-block;
-}
-
-.logo-glow img {
+.hero img {
   width: 260px;
   height: auto;
-  filter: brightness(1.3) contrast(1.25);
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.6);
 }
 
-/* OUTLINE GLOW EFFECT */
-.logo-glow::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  background-image: url("https://raw.githubusercontent.com/kt615/2068b--Info-page/main/Screenshot%202026-08-14%20230049.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  filter: drop-shadow(0 0 6px white);
-  opacity: 0.9;
-  pointer-events: none;
-}
-
+/* HERO TEXT */
 .hero h1 {
   font-size: 2.8rem;
   margin-bottom: 1rem;
@@ -192,9 +176,7 @@ footer {
 
 <!-- HERO -->
 <div class="hero">
-  <div class="logo-glow">
-    <img src="https://raw.githubusercontent.com/kt615/2068b--Info-page/main/Screenshot%202026-08-14%20230049.png" alt="Team 2068B Logo">
-  </div>
+  <img src="https://raw.githubusercontent.com/kt615/2068b--Info-page/main/Tonka2068B.png" alt="Team 2068B Logo">
   <h1>Welcome to Team 2068B Robotics</h1>
   <p>Engineering through the storm — clarity through innovation.</p>
 </div>
@@ -271,3 +253,10 @@ footer {
 </section>
 
 <!-- FOOTER -->
+<footer>
+  © 2026 Team 2068B Robotics
+</footer>
+
+</body>
+</html>
+
