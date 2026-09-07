@@ -13,44 +13,40 @@
   box-sizing: border-box;
 }
 
-/* SKY BACKGROUND — LIGHT BLUE + PINK SUNSET */
+/* BACKGROUND IMAGE */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: linear-gradient(
-    to bottom,
-    #dff3ff 0%,     /* very light blue top */
-    #fcd2e8 60%,    /* soft pink sunset */
-    #f7b2d9 100%    /* deeper pink near horizon */
-  );
-  color: #000;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+  color: #fff;
 }
 
-/* PURE CSS CLOUDS — ALWAYS WORK */
-.cloud {
-  position: absolute;
-  background: #ffffff;
-  border-radius: 50px;
-  box-shadow:
-    40px 20px 0 10px #ffffff,
-    80px 25px 0 15px #ffffff,
-    20px 40px 0 10px #ffffff;
-  width: 120px;
-  height: 60px;
-  opacity: 0.9;
+/* IMAGE BACKGROUND */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("https://thumbs.dreamstime.com/b/rainy-city-night-view-wet-window-blurry-lights-shine-rain-covered-creating-moody-atmosphere-perfect-desktop-358885491.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
 }
 
-/* Cloud positions */
-#cloud1 { top: 80px; left: 10%; }
-#cloud2 { top: 180px; left: 60%; }
-#cloud3 { top: 300px; left: 30%; }
-#cloud4 { top: 450px; left: 75%; }
+/* DARK OVERLAY FOR READABILITY */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(2px);
+  z-index: -1;
+}
 
 /* NAVBAR */
 header {
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.6);
   backdrop-filter: blur(10px);
   padding: 1rem;
   position: sticky;
@@ -79,17 +75,16 @@ nav a {
   margin: 3rem auto;
   padding: 2rem;
   text-align: center;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
 
 .hero h1 {
   font-size: 2.8rem;
   margin-bottom: 1rem;
-  color: #003366;
 }
 
 .hero p {
   font-size: 1.2rem;
-  color: #003366;
 }
 
 /* SECTIONS */
@@ -97,12 +92,13 @@ section {
   max-width: 1100px;
   margin: 2rem auto;
   padding: 1rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
 
 section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #003366;
+  color: #ffd700;
 }
 
 /* SPONSORSHIP PACKET */
@@ -115,22 +111,21 @@ section h2 {
 .sponsor-card {
   width: 100%;
   max-width: 700px;
-  background: rgba(255,255,255,0.85);
+  background: rgba(0,0,0,0.55);
   padding: 1.5rem;
   border-radius: 16px;
-  border: 1px solid rgba(0,0,0,0.2);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
 .sponsor-card h3 {
   margin-top: 1rem;
-  color: #005fa3;
+  color: #00aaff;
 }
 
 .sponsor-card ul {
   list-style: none;
   margin: 0.5rem 0 1rem 0;
-  padding-left: 0;
 }
 
 .sponsor-card ul li {
@@ -139,7 +134,7 @@ section h2 {
 
 .sponsor-card ul li::before {
   content: "• ";
-  color: #005fa3;
+  color: #ffd700;
 }
 
 /* FOOTER */
@@ -154,12 +149,6 @@ footer {
 </head>
 
 <body>
-
-<!-- CSS CLOUDS -->
-<div id="cloud1" class="cloud"></div>
-<div id="cloud2" class="cloud"></div>
-<div id="cloud3" class="cloud"></div>
-<div id="cloud4" class="cloud"></div>
 
 <!-- NAVBAR -->
 <header>
@@ -178,7 +167,7 @@ footer {
 <!-- HERO -->
 <div class="hero">
   <h1>Welcome to Team 2068B Robotics</h1>
-  <p>Engineering under a pink sunset sky with soft clouds.</p>
+  <p>Engineering through the storm — clarity through innovation.</p>
 </div>
 
 <!-- ABOUT -->
