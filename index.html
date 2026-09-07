@@ -6,12 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* BODY */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #fff;
@@ -20,242 +22,38 @@ body {
   position: relative;
 }
 
-/* REAL SUNSET CLOUD IMAGE */
+/* BLUE SKY BACKGROUND */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("https://images.unsplash.com/photo-1501973801540-537f08ccae7b?auto=format&fit=crop&w=1600&q=80");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation: drift 60s ease-in-out infinite;
-  z-index: -2;
-  opacity: 0.9;
+  background: linear-gradient(#6ec6ff, #bde6ff);
+  z-index: -3;
 }
 
-/* SUNSET GLOW OVERLAY */
-body::after {
-  content: "";
+/* CLOUD LAYER 1 */
+.clouds {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at top,
-    rgba(255,180,120,0.5),
-    rgba(255,120,160,0.4),
-    rgba(255,200,0,0.25),
-    rgba(0,0,0,0.6)
-  );
-  animation: glow 40s ease-in-out infinite alternate;
+  background-image: url("https://i.imgur.com/8pQeYQv.png");
+  background-repeat: repeat-x;
+  background-size: 600px;
+  animation: cloudMove 120s linear infinite;
+  opacity: 0.8;
+  z-index: -2;
+}
+
+/* CLOUD LAYER 2 (slower, spaced out) */
+.clouds2 {
+  position: fixed;
+  inset: 0;
+  background-image: url("https://i.imgur.com/8pQeYQv.png");
+  background-repeat: repeat-x;
+  background-size: 800px;
+  animation: cloudMove2 180s linear infinite;
+  opacity: 0.5;
   z-index: -1;
-  mix-blend-mode: soft-light;
 }
 
-@keyframes drift {
-  0% { background-position: center; }
-  50% { background-position: center 20px; }
-  100% { background-position: center; }
-}
-
-@keyframes glow {
-  0% { opacity: 0.6; }
-  50% { opacity: 0.9; }
-  100% { opacity: 0.6; }
-}
-
-/* NAVBAR */
-header {
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(10px);
-  padding: 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-nav {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav a {
-  color: #ffd700;
-  text-decoration: none;
-  margin-left: 1rem;
-  font-weight: 600;
-}
-
-/* HERO */
-.hero {
-  max-width: 1100px;
-  margin: 3rem auto;
-  padding: 2rem;
-  text-align: center;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
-}
-
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.2rem;
-}
-
-/* SECTIONS */
-section {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 1rem;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
-}
-
-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #ffd700;
-}
-
-/* SPONSORSHIP PACKET */
-.sponsor-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.sponsor-card {
-  width: 100%;
-  max-width: 700px;
-  background: rgba(0,0,0,0.55);
-  padding: 1.5rem;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
-
-.sponsor-card h3 {
-  margin-top: 1rem;
-  color: #00aaff;
-}
-
-.sponsor-card ul {
-  list-style: none;
-  margin: 0.5rem 0 1rem 0;
-}
-
-.sponsor-card ul li {
-  margin-bottom: 0.4rem;
-}
-
-.sponsor-card ul li::before {
-  content: "• ";
-  color: #ffd700;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: rgba(0,0,0,0.6);
-  margin-top: 2rem;
-  color: #fff;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <nav>
-    <div class="logo">Team 2068B</div>
-    <div>
-      <a href="#about">About</a>
-      <a href="#team">Team</a>
-      <a href="#robots">Robots</a>
-      <a href="#sponsors">Sponsors</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-</header>
-
-<div class="hero">
-  <h1>Welcome to Team 2068B Robotics</h1>
-  <p>Engineering under a sky of orange, gold, and pink.</p>
-</div>
-
-<section id="about">
-  <h2>About Team 2068B</h2>
-  <p>Tonka Robotics Team 2068B is a competitive student robotics team focused on engineering, programming, CAD design, problem solving, and leadership.</p>
-</section>
-
-<section id="team">
-  <h2>Meet the Team</h2>
-  <p>Builders, programmers, drivers, and leaders working together.</p>
-</section>
-
-<section id="robots">
-  <h2>Our Robots</h2>
-  <p>Override X, DR4B Titan, and more.</p>
-</section>
-
-<section id="sponsors">
-  <h2>Tonka Robotics Team 2068B Sponsorship Program</h2>
-
-  <div class="sponsor-wrapper">
-    <div class="sponsor-card">
-
-      <p>Sponsor support helps cover robot parts, motors, electronics, competition registration, travel expenses, outreach events, tools, and engineering materials.</p>
-
-      <h3>Estimated Season Budget</h3>
-      <ul>
-        <li>Robot Parts — $1,500</li>
-        <li>Electronics — $1,200</li>
-        <li>Registration — $800</li>
-        <li>Repairs — $800</li>
-        <li>Field Elements — $700</li>
-        <li>Tools — $500</li>
-        <li>Notebook — $300</li>
-        <li>Branding — $500</li>
-        <li>Outreach — $400</li>
-        <li>Local Travel — $1,300</li>
-        <li>Championship Travel — $1,500</li>
-        <li>Total — $10,000</li>
-      </ul>
-
-      <h3>How Sponsorship Helps</h3>
-      <ul>
-        <li>$250 — Replacement parts</li>
-        <li>$500 — Tournament fees</li>
-        <li>$1,000 — Motors & sensors</li>
-        <li>$2,000+ — Major robot upgrades</li>
-        <li>$5,000+ — World Championship travel</li>
-      </ul>
-
-      <h3>Season Goals</h3>
-      <ul>
-        <li>Return to Worlds</li>
-        <li>Expand STEM outreach</li>
-        <li>Build advanced robots</li>
-        <li>Develop future engineers</li>
-      </ul>
-
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: __________________</p>
-  <p>Phone: __________________</p>
-</section>
-
-<footer>
-  © 2026 Team 2068B Robotics
-</footer>
-
-</body>
-</html>
-
+@keyframes cloudMove {
+  from { background-position: 0 50px
