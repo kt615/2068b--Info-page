@@ -1,165 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Team 2068B Robotics</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    :root {
-      --blue: #007bff;
-      --yellow: #ffd700;
-      --light: #ffffff;
-      --dark: #0b0c10;
-    }
+<meta charset="UTF-8">
+<title>Team 2068B Robotics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
+<style>
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #000000;
-      line-height: 1.6;
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-    }
+/* BODY + ANIMATED SUNSET CLOUD BACKGROUND */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
 
-    /* Animated sunset sky with real clouds */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background-image: url("https://i.imgur.com/4YVQe5B.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      animation: driftClouds 60s linear infinite;
-      opacity: 0.9;
-    }
+/* REAL SUNSET CLOUD IMAGE + SLOW MOVEMENT */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1501973801540-537f08ccae7b?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: drift 60s ease-in-out infinite;
+  z-index: -2;
+  opacity: 0.9;
+}
 
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: radial-gradient(circle at top,
-        rgba(255, 200, 150, 0.6),
-        rgba(255, 140, 180, 0.4),
-        rgba(255, 215, 0, 0.25),
-        rgba(11, 12, 16, 0.6)
-      );
-      animation: sunsetGlow 40s ease-in-out infinite alternate;
-      mix-blend-mode: soft-light;
-    }
+/* SUNSET GLOW GRADIENT OVERLAY */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top,
+    rgba(255,180,120,0.5),
+    rgba(255,120,160,0.4),
+    rgba(255,200,0,0.25),
+    rgba(0,0,0,0.6)
+  );
+  animation: glow 40s ease-in-out infinite alternate;
+  z-index: -1;
+  mix-blend-mode: soft-light;
+}
 
-    @keyframes driftClouds {
-      0% { background-position: center; }
-      50% { background-position: center 20px; }
-      100% { background-position: center; }
-    }
+@keyframes drift {
+  0% { background-position: center; }
+  50% { background-position: center 20px; }
+  100% { background-position: center; }
+}
 
-    @keyframes sunsetGlow {
-      0% { opacity: 0.6; }
-      50% { opacity: 0.9; }
-      100% { opacity: 0.6; }
-    }
+@keyframes glow {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.6; }
+}
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(11, 12, 16, 0.75);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    }
+/* NAVBAR */
+header {
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
-    .nav {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1.5rem;
-      color: var(--light);
-    }
+nav {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .logo {
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--yellow);
-    }
+nav a {
+  color: #ffd700;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-weight: 600;
+}
 
-    .logo span {
-      color: var(--blue);
-    }
-
-    nav a {
-      color: var(--light);
-      text-decoration: none;
-      margin-left: 1.25rem;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    nav a:hover {
-      color: var(--yellow);
-    }
-
-    .hero {
-      max-width: 1100px;
-      margin: 2.5rem auto;
-      padding: 2.5rem 1.5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
-      gap: 2rem;
-      align-items: center;
-      color: #ffffff;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
-    }
-
-    .hero h1 {
-      font-size: 2.6rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero h1 span {
-      color: var(--blue);
-    }
-
-    .hero p {
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.7rem 1.4rem;
-      border-radius: 999px;
-      border: 1px solid var(--blue);
-      color: var(--light);
-      text-decoration: none;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      background: rgba(0, 0, 0, 0.35);
-    }
-
-    .btn-primary {
-      background: var(--blue);
-      border-color: var(--blue);
-    }
-
-    .btn-primary:hover {
-      background
+/* HERO SECTION */
+.hero {
+  max-width: 
