@@ -30,7 +30,7 @@ body::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: brightness(0.95) contrast(1.15); /* sharper, clearer */
+  filter: brightness(1.05) contrast(1.2);
   z-index: -3;
 }
 
@@ -39,8 +39,8 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.22); /* subtle dark overlay */
-  backdrop-filter: blur(0.4px); /* almost no blur */
+  background: rgba(0,0,0,0.22);
+  backdrop-filter: blur(0.4px);
   z-index: -2;
 }
 
@@ -78,15 +78,32 @@ nav a {
   text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
 
-/* LOGO — WHITE GLOW */
-.hero img {
-  width: 260px;
-  height: auto;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 14px white) drop-shadow(0 0 26px rgba(255,255,255,0.9));
+/* LOGO — THIN WHITE OUTLINE GLOW */
+.logo-glow {
+  position: relative;
+  display: inline-block;
 }
 
-/* HERO TEXT */
+.logo-glow img {
+  width: 260px;
+  height: auto;
+  filter: brightness(1.3) contrast(1.25);
+}
+
+/* OUTLINE GLOW EFFECT */
+.logo-glow::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  background-image: url("https://raw.githubusercontent.com/kt615/2068b--Info-page/main/Screenshot%202026-08-14%20230049.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 6px white);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
 .hero h1 {
   font-size: 2.8rem;
   margin-bottom: 1rem;
@@ -175,7 +192,9 @@ footer {
 
 <!-- HERO -->
 <div class="hero">
-  <img src="https://raw.githubusercontent.com/kt615/2068b--Info-page/main/Screenshot%202026-08-14%20230049.png" alt="Team 2068B Logo">
+  <div class="logo-glow">
+    <img src="https://raw.githubusercontent.com/kt615/2068b--Info-page/main/Screenshot%202026-08-14%20230049.png" alt="Team 2068B Logo">
+  </div>
   <h1>Welcome to Team 2068B Robotics</h1>
   <p>Engineering through the storm — clarity through innovation.</p>
 </div>
@@ -252,10 +271,3 @@ footer {
 </section>
 
 <!-- FOOTER -->
-<footer>
-  © 2026 Team 2068B Robotics
-</footer>
-
-</body>
-</html>
-
